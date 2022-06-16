@@ -1,0 +1,54 @@
+﻿dev     设备 是一个虚拟目录
+boot    linux内核和其他软件包
+lib     应用程序
+home    放个人文件
+lost+found  系统崩溃时的碎片文件
+media	媒体的意思 自动挂载目录
+mnt	手动挂载目录	mount的缩写
+opt     用户级目录  用来存储自安装软件
+	可以安装在其他盘 放游戏也可 相当于D:/Software
+	该软件的所有数据和库文件在此   apt安装的在此
+usr	系统级目录  自编译安装在此  相当于C:/Program File
+proc    虚拟目录  包含运行程序信息
+sys	虚拟目录  内核所使用的系统是信息
+tmp     临时文件
+
+apt purge     删除软件所有相关软件
+apt remove    会留下配置文件
+
+usr 指 Unix System Resource
+#(shang)  !(bang) 和起来的叫shebang  
+#!/usr/bin/env python3 去$PATH 里面找py  man env
+把自己写的脚本放到  /usr/local/bin/
+
+. xxxx.sh  .后面加空格在当前shell执行而不是子shell
+.即是source命令
+
+在程序名字后加& 表示在后台运行
+
+          id 表示linux六种运行级别  0停机 6不断重启 1单用户 2多用户无nfs
+sudo init 3  结束图像界面  //记得先关闭file否则丢失  
+	  5  进入
+在tty7关闭后 在其他tty登录再启动图形界面即可恢复图形界面
+
+eth0是以太网设备编号0（0就是第一块，liunx是从0开始编号的）
+lo是Loopback纯软件网络设备接口
+有时它指的是一个物理输入设备，例如串口，有时它指的是一个允许用户和系统交互的虚拟 TTY
+pts/0 pts指的是虚拟终端 0指的是第几个
+cmd : cmd1&&cmd2  if cmd1 0=0 so that ./cmd2 esle not run cmd2
+chgrp命令 +用户 +filename chownm命令改变所属用户 
+echo -e 激活转移字符#更多bing search \n换行
+ctrl + shift + t :新建终端
+
+脚本开机自启动编辑 编辑/etc/rc.local 写入脚本命令 然后改变文件权限即可
+
+Linux 系统中，绝对多数命令的文件所有者默认都是 root
+SUID 只有可执行文件才能设定 SetUID 权限，对目录设定 SUID，是无效的。 
+    • 用户要对该文件拥有 x（执行）权限。 
+    • 用户在执行该文件时，会以文件所有者的身份执行。 
+    • SetUID 权限只在文件执行过程中有效，一旦执行完毕，身份的切换也随之消失
+    • 脚本类文件s权限不受认可，那么可不可以先用C写个程序赋予s权限，不仅system()调用脚本不行，system()调用二进制可执行文件也不具有s权限。
+本质原因是，system()是通过fork()建立子进程，fork()建立子进程时把子进程归属uid而归属euid
+
+
+findmnt 查看文件系统,mkfs.ext4 /dev/xx  制作分区 
